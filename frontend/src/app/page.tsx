@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 import ImageUpload from "../components/ImageUpload";
 import { ArrowRight } from "lucide-react";
-import { apiService } from "../services/api";
+import { imageAnalysisApi } from "../services/imageAnalysisApi";
 import HeroSection from "../components/HeroSection";
 import FeaturesSection from "../components/FeaturesSection";
-import LoadingState from "../components/LoadingState";
+import AnalysisLoadingState from "../components/AnalysisLoadingState";
 import AnalysisResults from "../components/AnalysisResults";
-import AuthenticResult from "../components/AuthenticResult";
+import RealImageResult from "../components/RealImageResult";
 
 export default function Home() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -74,7 +74,7 @@ export default function Home() {
     setHasResults(false);
 
     try {
-      const data = await apiService.analyzeImage(uploadedFile, currentApiUrl);
+      const data = await imageAnalysisApi.analyzeImage(uploadedFile, currentApiUrl);
 
       if (data.status === "Real") {
         // Handle Authentic
@@ -157,12 +157,12 @@ export default function Home() {
         )}
 
         {/* Loading State */}
-        {isAnalyzing && <LoadingState />}
+        {isAnalyzing && <AnalysisLoadingState />}
 
         {/* Results Layout */}
         {hasResults && uploadedImageUrl && classificationResult && (
           classificationResult.class_name === "Authentic" ? (
-            <AuthenticResult
+            <RealImageResult
               uploadedImageUrl={uploadedImageUrl}
               confidence={classificationResult.confidence}
               onClearImage={handleClearImage}

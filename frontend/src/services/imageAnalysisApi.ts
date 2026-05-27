@@ -11,7 +11,7 @@ export interface AnalysisResponse {
     error?: string;
 }
 
-export const apiService = {
+export const imageAnalysisApi = {
     async analyzeImage(file: File, apiUrl: string): Promise<AnalysisResponse> {
         const formData = new FormData();
         formData.append("image", file);

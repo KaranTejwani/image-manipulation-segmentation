@@ -1,16 +1,16 @@
 import { CheckCircle, Scan, ShieldCheck } from "lucide-react";
 
-interface AuthenticResultProps {
+interface RealImageResultProps {
     uploadedImageUrl: string;
     confidence: number;
     onClearImage: () => void;
 }
 
-export default function AuthenticResult({
+export default function RealImageResult({
     uploadedImageUrl,
     confidence,
     onClearImage,
-}: AuthenticResultProps) {
+}: RealImageResultProps) {
     return (
         <div className="animate-fade-in max-w-[1200px] mx-auto">
             {/* Header with Action Button */}

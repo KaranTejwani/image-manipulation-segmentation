@@ -1,6 +1,6 @@
 import { Activity } from "lucide-react";
 
-export default function LoadingState() {
+export default function AnalysisLoadingState() {
     return (
         <div className="max-w-4xl mx-auto min-h-[60vh] flex flex-col items-center justify-center">
             <div className="relative mb-8">
